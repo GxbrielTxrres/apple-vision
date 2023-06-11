@@ -1,5 +1,5 @@
 import { OrbitControls, useScroll } from "@react-three/drei";
-import { AppleVisionPro } from "./AppleVisionPro";
+import AppleVisionPro from "./AppleVisionPro";
 import Background from "./Background";
 import { useLayoutEffect, useRef, useState } from "react";
 import Effects from "./Effects";
