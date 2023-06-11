@@ -78,7 +78,10 @@ export default function Camera({ tl }) {
 		<OrbitControls
 			ref={controls}
 			onEnd={onEnd}
-			enabled={false}
+			enableDamping={false}
+			enablePan={false}
+			enableRotate={false}
+			enableZoom={false}
 			target={[-0.21, -3.55, -0.068]}
 		/>
 	);
