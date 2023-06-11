@@ -1,33 +1,33 @@
-import { useThree } from "@react-three/fiber";
-import { useLayoutEffect, useRef } from "react";
-import { OrbitControls } from "@react-three/drei";
+import { useFrame, useThree } from "@react-three/fiber";
+import { useLayoutEffect, useRef, useState } from "react";
 
 export default function Camera({ tl }) {
 	const { camera } = useThree();
+	const [width] = useState(window.innerWidth);
 
-	// {
-	//     "position": {
-	//         "x": 20.050627320506333,
-	//         "y": 1.1223015764789918,
-	//         "z": -0.614410067640789
-	//     },
-	//     "rotation": {
-	//         "isEuler": true,
-	//         "_x": -1.4985549143567292,
-	//         "_y": 1.5046244291150441,
-	//         "_z": 1.4983970153369177,
-	//         "_order": "XYZ"
-	//     },
-	//     "target": {
-	//         "x": -0.3527393477399825,
-	//         "y": -0.222850143775976,
-	//         "z": -0.7207020677824643
-	//     }
-	// }
+	//detect mobile/desktop for proper field of view + animations
+	useLayoutEffect(() => {
+		console.log(width);
+		if (width < 750) {
+			camera.fov = 100;
+			camera.updateProjectionMatrix();
+			if (tl) {
+				tl.to(
+					camera,
+					{
+						fov: 130,
+						duration: 1,
+						ease: "power3.out",
+					},
+					0.1,
+				);
+			}
+		}
+	}, [tl]);
+	//timeline animations
 	useLayoutEffect(() => {
 		camera.position.set(0.67, 2.79, -26.99);
 		camera.rotation.set(-2.82, 0.044, 3.12);
-
 		if (tl) {
 			tl.to(
 				camera.position,
@@ -38,7 +38,7 @@ export default function Camera({ tl }) {
 					duration: 1,
 					ease: "power3.inOut",
 				},
-				1.1,
+				0.1,
 			);
 			tl.to(
 				camera.rotation,
@@ -49,10 +49,16 @@ export default function Camera({ tl }) {
 					duration: 1,
 					ease: "power3.inOut",
 				},
-				1.1,
+				0.1,
 			);
 		}
 	}, [tl]);
+
+	useFrame(() => {
+		if (camera.fov < 130) {
+			camera.updateProjectionMatrix();
+		}
+	});
 
 	return;
 }

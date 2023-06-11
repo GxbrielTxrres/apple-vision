@@ -12,7 +12,7 @@ export default function Effects({ tl }) {
 					duration: 1,
 					ease: "power2.out",
 				},
-				1.1,
+				0.5,
 			);
 		}
 	}, [tl]);
