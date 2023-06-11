@@ -4,15 +4,7 @@ import { OrbitControls } from "@react-three/drei";
 
 export default function Camera({ tl }) {
 	const { camera } = useThree();
-	const controls = useRef();
 
-	function onEnd() {
-		console.log({
-			position: controls.current.object.position,
-			rotation: controls.current.object.rotation,
-			target: controls.current.target,
-		});
-	}
 	// {
 	//     "position": {
 	//         "x": 20.050627320506333,
@@ -59,30 +51,8 @@ export default function Camera({ tl }) {
 				},
 				1.1,
 			);
-
-			tl.to(
-				controls.current.target,
-				{
-					x: -0.35,
-					y: -0.22,
-					z: -0.72,
-					duration: 1,
-					ease: "power3.in",
-				},
-				0.9,
-			);
 		}
-	}, [tl, camera]);
+	}, [tl]);
 
-	return (
-		<OrbitControls
-			ref={controls}
-			onEnd={onEnd}
-			enableDamping={false}
-			enablePan={false}
-			enableRotate={false}
-			enableZoom={false}
-			target={[-0.21, -3.55, -0.068]}
-		/>
-	);
+	return;
 }
