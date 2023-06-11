@@ -78,7 +78,7 @@ export default function Camera({ tl }) {
 		<OrbitControls
 			ref={controls}
 			onEnd={onEnd}
-			enableZoom={false}
+			enabled={false}
 			target={[-0.21, -3.55, -0.068]}
 		/>
 	);
