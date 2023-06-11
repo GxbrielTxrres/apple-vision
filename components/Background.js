@@ -37,18 +37,8 @@ export default function Background({ tl }) {
 	// });
 	return (
 		<>
-			<Environment
-				files="studio_small_09_1k.hdr"
-				// resolution={128}
-			>
-				{/* <Lightformer
-					form="ring"
-					position={[position.x, position.y, position.z]}
-					target={[target.x, target.y, target.z]}
-					scale={[scale.x, scale.y]}
-					intensity={30}
-				/> */}
-			</Environment>
+			<Environment files="studio_small_09_1k.hdr" resolution={128} />
+
 			<pointLight position={[-3.5, 97, 16]} intensity={30} distance={0} />
 			<color ref={background} attach="background" args={["black"]} />
 		</>

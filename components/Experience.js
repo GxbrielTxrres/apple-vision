@@ -1,14 +1,14 @@
 import { OrbitControls, useScroll } from "@react-three/drei";
-import { AppleVisionPro } from "../../components/AppleVisionPro";
-import Background from "../../components/Background";
+import { AppleVisionPro } from "./AppleVisionPro";
+import Background from "./Background";
 import { useLayoutEffect, useRef, useState } from "react";
-import Effects from "../../components/Effects";
-import Camera from "../../components/Camera";
+import Effects from "./Effects";
+import Camera from "./Camera";
 import { gsap } from "gsap";
 import { useFrame } from "@react-three/fiber";
 import { Perf } from "r3f-perf";
 
-export function Experience() {
+export default function Experience() {
 	const [tl, setTl] = useState();
 	const scroll = useScroll();
 	const timeline = useRef();

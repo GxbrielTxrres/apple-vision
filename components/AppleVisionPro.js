@@ -11,7 +11,7 @@ import React, { useLayoutEffect, useRef } from "react";
 import { useGLTF } from "@react-three/drei";
 import { Color, MeshPhysicalMaterial } from "three";
 
-export function AppleVisionPro(props) {
+export default function AppleVisionPro(props) {
 	const { nodes, materials } = useGLTF("/apple_vision_pro-transformed.glb");
 	const outerLayer = useRef();
 

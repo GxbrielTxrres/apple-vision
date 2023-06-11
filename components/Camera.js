@@ -72,7 +72,7 @@ export default function Camera({ tl }) {
 				0.9,
 			);
 		}
-	}, [tl]);
+	}, [tl, camera]);
 
 	return (
 		<OrbitControls
