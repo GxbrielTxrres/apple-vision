@@ -1,4 +1,4 @@
-import { OrbitControls, useScroll } from "@react-three/drei";
+import { OrbitControls, Scroll, useScroll } from "@react-three/drei";
 import AppleVisionPro from "./AppleVisionPro";
 import Background from "./Background";
 import { useLayoutEffect, useRef, useState } from "react";
@@ -7,6 +7,8 @@ import Camera from "./Camera";
 import { gsap } from "gsap";
 import { useFrame } from "@react-three/fiber";
 import { Perf } from "r3f-perf";
+import VisionPro from "./html/VisionPro";
+import AppleLogo from "./Apple_logo";
 
 export default function Experience() {
 	const [tl, setTl] = useState();
@@ -33,11 +35,12 @@ export default function Experience() {
 
 	return (
 		<>
-			{/* <Perf /> */}
 			<Camera tl={tl} />
 			<Background tl={tl} />
 			<Effects tl={tl} />
 			<AppleVisionPro />
+			<AppleLogo />
+			<VisionPro tl={tl} />
 		</>
 	);
 }

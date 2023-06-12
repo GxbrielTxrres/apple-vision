@@ -1,0 +1,22 @@
+/* Introducing */
+
+.introText {
+	font-size: 1.1rem;
+	font-family: "Roboto";
+	font-weight: 500;
+	line-height: 1.23;
+	letter-spacing: 0.05em;
+	color: #6e6e73;
+
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, 450%);
+}
+
+/* font-size: 1.5rem;
+	font-family: "Roboto";
+	font-weight: 600;
+	line-height: 1.16;
+	letter-spacing: 0.009em;
+	color: #6e6e73; */

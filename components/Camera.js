@@ -26,7 +26,7 @@ export default function Camera({ tl }) {
 	}, [tl]);
 	//timeline animations
 	useLayoutEffect(() => {
-		camera.position.set(0.67, 2.79, -26.99);
+		camera.position.set(0.65, 2.79, -26.99);
 		camera.rotation.set(-2.82, 0.044, 3.12);
 		if (tl) {
 			tl.to(

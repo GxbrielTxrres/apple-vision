@@ -11,14 +11,13 @@ export default function Background({ tl }) {
 	const light = useRef();
 
 	useLayoutEffect(() => {
-		console.log(background.current);
 		if (tl) {
 			tl.to(
 				background.current,
 				{
-					r: 1,
-					g: 1,
-					b: 1,
+					r: 0.8,
+					g: 0.8,
+					b: 0.8,
 					duration: 1,
 					ease: "power3.inOut",
 				},
