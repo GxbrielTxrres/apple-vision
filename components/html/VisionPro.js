@@ -35,8 +35,8 @@ export default function VisionPro({ tl }) {
 						text.material,
 						{
 							opacity: 0,
-							duration: i * 0.15 + 0.1,
-							ease: "power2.inOut",
+							duration: i * 0.15 + 0.25,
+							ease: "power3.inOut",
 						},
 						0.15,
 					);
@@ -60,7 +60,7 @@ export default function VisionPro({ tl }) {
 	useFrame(() => {
 		if (texts.current) {
 			texts.current.forEach((text) => {
-				if (text.material.opacity < 0.1) {
+				if (text.material.opacity < 0.05) {
 					text.visible = false;
 				} else {
 					text.visible = true;
@@ -89,7 +89,7 @@ export default function VisionPro({ tl }) {
 					}}
 					key={i}
 					rotation-y={Math.PI}
-					position={[0, i * 0.1 - 1.5, i * 0.2]}
+					position={[0, -1.25, 0]}
 					fontSize={2.45}
 				>
 					Vision Pro
