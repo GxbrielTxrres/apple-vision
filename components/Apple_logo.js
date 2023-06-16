@@ -7,17 +7,41 @@ Source: https://sketchfab.com/3d-models/apple-logo-8b13cb3155da41108b1a13e3bc354
 Title: APPLE LOGO
 */
 
-import React, { useRef } from "react";
-import { useGLTF } from "@react-three/drei";
+import React, { useEffect, useRef } from "react";
+import { Center, useGLTF } from "@react-three/drei";
+import { useFrame, useThree } from "@react-three/fiber";
 
 export default function AppleLogo(props) {
+	const { centered, ...otherProps } = props;
+
+	const ref = useRef();
+
+	useFrame(({ clock }) => {
+		ref.current.rotation.y = clock.elapsedTime * 0.5;
+	});
+
 	const { nodes, materials } = useGLTF("/apple_logo-transformed.glb");
 	return (
-		<group {...props} dispose={null}>
-			<mesh
-				geometry={nodes.Object_2.geometry}
-				material={materials["Scene_-_Root"]}
-			/>
+		<group {...otherProps} dispose={null}>
+			{centered ? (
+				<Center position={[0.15, 2, -18]}>
+					<mesh
+						ref={ref}
+						geometry={nodes.Object_2.geometry}
+						material={materials["Scene_-_Root"]}
+						scale={0.25}
+						rotation-y={Math.PI}
+					/>
+				</Center>
+			) : (
+				<mesh
+					ref={ref}
+					geometry={nodes.Object_2.geometry}
+					material={materials["Scene_-_Root"]}
+					scale={0.25}
+					rotation-y={Math.PI}
+				/>
+			)}
 		</group>
 	);
 }

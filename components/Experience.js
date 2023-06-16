@@ -40,7 +40,7 @@ export default function Experience() {
 			<Background tl={tl} />
 			<Effects tl={tl} />
 			<AppleVisionPro />
-			<AppleLogo />
+			<AppleLogo centered />
 			<VisionPro tl={tl} />
 		</>
 	);

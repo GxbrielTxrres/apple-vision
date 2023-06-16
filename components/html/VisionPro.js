@@ -18,13 +18,12 @@ export default function VisionPro({ tl }) {
 			texts.current.forEach((text, i) => {
 				//
 				text.lookAt(camera.position);
-
 				if (tl) {
 					tl.to(
 						text.position,
 						{
-							y: -0.4 * i,
-							z: i * -0.2,
+							y: -0.4 * (i + 1),
+							z: (i + 1) * -0.2,
 							duration: 0.2,
 							ease: "power2.inOut",
 						},
@@ -35,10 +34,10 @@ export default function VisionPro({ tl }) {
 						text.material,
 						{
 							opacity: 0,
-							duration: i * 0.15 + 0.25,
+							duration: 0.25,
 							ease: "power3.inOut",
 						},
-						0.15,
+						0.1,
 					);
 				}
 			});
@@ -57,17 +56,17 @@ export default function VisionPro({ tl }) {
 		}
 	}, [tl]);
 
-	useFrame(() => {
-		if (texts.current) {
-			texts.current.forEach((text) => {
-				if (text.material.opacity < 0.05) {
-					text.visible = false;
-				} else {
-					text.visible = true;
-				}
-			});
-		}
-	});
+	// useFrame(() => {
+	// 	if (texts.current) {
+	// 		texts.current.forEach((text) => {
+	// 			if (text.material.opacity < 0.05) {
+	// 				text.visible = false;
+	// 			} else {
+	// 				text.visible = true;
+	// 			}
+	// 		});
+	// 	}
+	// });
 
 	return (
 		<group position={[-0.1, -6, -15]}>
@@ -82,7 +81,7 @@ export default function VisionPro({ tl }) {
 			</Text>
 
 			{/* <Text rotation-y={Math.PI}>Vision Pro</Text> */}
-			{[...Array(4)].map((value, i) => (
+			{[...Array(3)].map((value, i) => (
 				<Text
 					ref={(el) => {
 						texts.current[i] = el;

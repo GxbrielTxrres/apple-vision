@@ -1,21 +1,34 @@
+import { useFrame } from "@react-three/fiber";
 import { Bloom, EffectComposer, N8AO, SMAA } from "@react-three/postprocessing";
-import { useLayoutEffect, useRef } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 export default function Effects({ tl }) {
 	const bloom = useRef();
+	const ao = useRef();
+
 	useLayoutEffect(() => {
-		console.log(bloom.current.blendMode.opacity.value);
 		if (tl) {
 			tl.to(
 				bloom.current.blendMode.opacity,
 				{
-					value: 0,
+					value: 0.1,
 					duration: 1,
 					ease: "power2.out",
 				},
 				0.5,
 			);
+
+			tl.to(
+				ao.current.configuration,
+				{
+					intensity: 10,
+					duration: 1,
+					ease: "power2.out",
+				},
+				0.75,
+			);
 		}
 	}, [tl]);
+
 	return (
 		<EffectComposer multisampling={0} disableNormalPass>
 			<Bloom
@@ -29,10 +42,11 @@ export default function Effects({ tl }) {
 			/>
 
 			<N8AO
+				ref={ao}
 				quality="performance"
-				intensity={5}
-				aoRadius={0.15}
-				denoiseRadius={1}
+				intensity={0}
+				aoRadius={0.1}
+				denoiseRadius={1.5}
 			/>
 			<SMAA />
 		</EffectComposer>

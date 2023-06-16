@@ -5,6 +5,7 @@ import {
 } from "@react-three/drei";
 import { useControls } from "leva";
 import { useLayoutEffect, useRef } from "react";
+import AppleLogo from "./Apple_logo";
 
 export default function Background({ tl }) {
 	const background = useRef();
@@ -44,16 +45,7 @@ export default function Background({ tl }) {
 			);
 		}
 	}, [tl]);
-	// const { target, position, scale } = useControls({
-	// 	target: { value: { x: 0, y: 0, z: 0 }, min: -10, max: 10, step: 0.01 },
-	// 	position: {
-	// 		value: { x: 0, y: 0, z: 0 },
-	// 		min: -10,
-	// 		max: 10,
-	// 		step: 0.01,
-	// 	},
-	// 	scale: { value: { x: 0, y: 0 }, min: 0, max: 20, step: 0.5 },
-	// });
+
 	return (
 		<>
 			<Environment files="studio_small_09_1k.hdr" resolution={128} />
