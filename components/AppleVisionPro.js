@@ -12,15 +12,16 @@ import { Center, useGLTF } from "@react-three/drei";
 import { Color, MeshPhysicalMaterial } from "three";
 import { useThree } from "@react-three/fiber";
 
-export default function AppleVisionPro(props) {
+export default function AppleVisionPro({ tl, ...otherProps }) {
 	const { nodes, materials } = useGLTF("/apple_vision_pro-transformed.glb");
 	const outerLayer = useRef();
 	const ref = useRef();
 
+	//make the vision pro invisible
 	useLayoutEffect(() => {
 		outerLayer.current.material = new MeshPhysicalMaterial({
 			transparent: true,
-			opacity: 0.86,
+			opacity: 0,
 			reflectivity: 1,
 
 			transmission: 1,
@@ -30,12 +31,45 @@ export default function AppleVisionPro(props) {
 			ior: 1.5,
 			color: new Color(0, 0, 0),
 		});
+
+		Object.values(materials).forEach((material) => {
+			material.transparent = true;
+			material.opacity = 0;
+		});
 	}, []);
+
+	//animate the vision pro to visible
+	useLayoutEffect(() => {
+		if (tl) {
+			Object.values(materials).forEach((material) => {
+				tl.to(
+					material,
+					{
+						opacity: 1,
+						duration: 1,
+						ease: "power3.out",
+					},
+					0.25,
+				);
+			});
+
+			tl.to(
+				outerLayer.current.material,
+				{
+					opacity: 0.86,
+					duration: 1,
+					ease: "power3.out",
+				},
+				0.25,
+			);
+		}
+	}, [tl]);
+
 	return (
 		<Center position-x={-0.15}>
 			<group
 				ref={ref}
-				{...props}
+				{...otherProps}
 				rotation-y={Math.PI / 2.01}
 				dispose={null}
 			>

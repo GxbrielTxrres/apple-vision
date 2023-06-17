@@ -39,8 +39,8 @@ export default function Experience() {
 			<Camera tl={tl} />
 			<Background tl={tl} />
 			<Effects tl={tl} />
-			<AppleVisionPro />
-			<AppleLogo centered />
+			<AppleVisionPro tl={tl} />
+			<AppleLogo centered tl={tl} />
 			<VisionPro tl={tl} />
 		</>
 	);

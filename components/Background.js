@@ -1,11 +1,5 @@
-import {
-	Environment,
-	Lightformer,
-	MeshDiscardMaterial,
-} from "@react-three/drei";
-import { useControls } from "leva";
+import { Environment } from "@react-three/drei";
 import { useLayoutEffect, useRef } from "react";
-import AppleLogo from "./Apple_logo";
 
 export default function Background({ tl }) {
 	const background = useRef();
