@@ -11,7 +11,7 @@ import React, { useLayoutEffect, useRef } from "react";
 import { Center, useGLTF } from "@react-three/drei";
 
 export default function AppleLogo(props) {
-	const { centered, tl, ...otherProps } = props;
+	const { centered, tl, color, ...otherProps } = props;
 
 	const ref = useRef();
 
@@ -49,6 +49,7 @@ export default function AppleLogo(props) {
 					ref={ref}
 					geometry={nodes.Object_2.geometry}
 					material={materials["Scene_-_Root"]}
+					material-color={color}
 					scale={0.25}
 					rotation-y={Math.PI}
 				/>

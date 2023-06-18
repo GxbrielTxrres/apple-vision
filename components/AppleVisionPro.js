@@ -12,7 +12,7 @@ import { Center, useGLTF } from "@react-three/drei";
 import { Color, MeshPhysicalMaterial } from "three";
 import { useThree } from "@react-three/fiber";
 
-export default function AppleVisionPro({ tl, ...otherProps }) {
+export default function AppleVisionPro({ tl, rotationY, ...otherProps }) {
 	const { nodes, materials } = useGLTF("/apple_vision_pro-transformed.glb");
 	const outerLayer = useRef();
 	const ref = useRef();
@@ -62,6 +62,16 @@ export default function AppleVisionPro({ tl, ...otherProps }) {
 				},
 				0.25,
 			);
+
+			tl.to(
+				ref.current.position,
+				{
+					y: 20,
+					duration: 0.5,
+					ease: "power2.in",
+				},
+				1.25,
+			);
 		}
 	}, [tl]);
 
@@ -70,7 +80,7 @@ export default function AppleVisionPro({ tl, ...otherProps }) {
 			<group
 				ref={ref}
 				{...otherProps}
-				rotation-y={Math.PI / 2.01}
+				rotation-y={rotationY}
 				dispose={null}
 			>
 				<mesh

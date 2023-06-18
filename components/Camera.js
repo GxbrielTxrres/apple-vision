@@ -7,7 +7,6 @@ export default function Camera({ tl }) {
 
 	//detect mobile/desktop for proper field of view + animations
 	useLayoutEffect(() => {
-		console.log(width);
 		if (width < 750) {
 			camera.fov = 100;
 			camera.updateProjectionMatrix();
@@ -50,6 +49,16 @@ export default function Camera({ tl }) {
 					ease: "power3.inOut",
 				},
 				0.1,
+			);
+
+			tl.to(
+				camera.position,
+				{
+					y: -20,
+					duration: 0.5,
+					ease: "power2.out",
+				},
+				1.25,
 			);
 		}
 	}, [tl]);
