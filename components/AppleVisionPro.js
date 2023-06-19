@@ -66,7 +66,7 @@ export default function AppleVisionPro({ tl, rotationY, ...otherProps }) {
 			tl.to(
 				ref.current.position,
 				{
-					y: 20,
+					y: 100,
 					duration: 0.5,
 					ease: "power2.in",
 				},

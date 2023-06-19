@@ -22,6 +22,9 @@ export default function Effects({ tl }) {
 				{
 					intensity: 10,
 					duration: 1,
+					repeat: 1,
+					repeatDelay: 0.4,
+					yoyo: true,
 					ease: "power2.out",
 				},
 				0.75,
