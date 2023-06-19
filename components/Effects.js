@@ -29,6 +29,16 @@ export default function Effects({ tl }) {
 				},
 				0.75,
 			);
+
+			tl.to(
+				bloom.current.blendMode.opacity,
+				{
+					value: 0.3,
+					duration: 1,
+					ease: "power2.out",
+				},
+				1.5,
+			);
 		}
 	}, [tl]);
 

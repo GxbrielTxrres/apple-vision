@@ -100,7 +100,7 @@ const Card = forwardRef(
 							onClick={() => {
 								setActive(false);
 							}}
-							position={[0, -2, 2]}
+							position={[0, -1, 1.5]}
 						>
 							Back
 						</Text>

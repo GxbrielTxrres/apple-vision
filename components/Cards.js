@@ -1,6 +1,8 @@
 import Card from "./Card";
 import AppleVisionPro from "./AppleVisionPro";
 import { Environment, Box, Sky, Stars, Center, Float } from "@react-three/drei";
+import CardBg from "./CardBg";
+import GradientShader from "./GradientShader";
 export default function Cards() {
 	return (
 		<Center position={[14.81, -20.41, -0.62]}>
@@ -19,13 +21,9 @@ export default function Cards() {
 					/>
 				</Float>
 			</Card>
-			<Card
-				position={[15, -21, -2.25]}
-				color="hotpink"
-				rotationY={Math.PI / 2.5}
-			>
+			<Card position={[15, -21, -2.25]} rotationY={Math.PI / 2.5}>
 				<Box material-color="yellow" />
-				<Sky turbidity={50} rayleigh={1.5} inclination={0} />
+				<CardBg sinScalar={0.7} />
 			</Card>
 
 			<Card
@@ -33,7 +31,9 @@ export default function Cards() {
 				color="black"
 				rotationY={-Math.PI / 2.5}
 			>
-				<Box material-color="yellow" />
+				<Box>
+					<GradientShader sinScalar={2.0} />
+				</Box>
 				<Stars />
 			</Card>
 		</Center>
