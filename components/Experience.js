@@ -37,7 +37,6 @@ export default function Experience() {
 
 	return (
 		<>
-			<Perf />
 			<Camera tl={tl} />
 			<Background tl={tl} />
 			<Effects tl={tl} />
