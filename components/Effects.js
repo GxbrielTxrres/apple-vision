@@ -3,7 +3,6 @@ import { Bloom, EffectComposer, N8AO, SMAA } from "@react-three/postprocessing";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 export default function Effects({ tl }) {
 	const bloom = useRef();
-	const ao = useRef();
 
 	useLayoutEffect(() => {
 		if (tl) {
@@ -15,19 +14,6 @@ export default function Effects({ tl }) {
 					ease: "power2.out",
 				},
 				0.5,
-			);
-
-			tl.to(
-				ao.current.configuration,
-				{
-					intensity: 10,
-					duration: 1,
-					repeat: 1,
-					repeatDelay: 0.4,
-					yoyo: true,
-					ease: "power2.out",
-				},
-				0.75,
 			);
 
 			tl.to(
@@ -54,13 +40,6 @@ export default function Effects({ tl }) {
 				opacity={0.75}
 			/>
 
-			<N8AO
-				ref={ao}
-				quality="performance"
-				intensity={0}
-				aoRadius={0.1}
-				denoiseRadius={1.5}
-			/>
 			<SMAA />
 		</EffectComposer>
 	);

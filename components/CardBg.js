@@ -2,7 +2,7 @@ import { shaderMaterial } from "@react-three/drei";
 import { shaders } from "../shaders/Shaders";
 import { extend, useFrame, useThree } from "@react-three/fiber";
 import { useRef, useState } from "react";
-export default function CardBg({ sinScalar }) {
+export default function CardBg({ sinScalar, positionZ }) {
 	const material = useRef();
 	//uniforms
 	const uniforms = {
@@ -24,7 +24,7 @@ export default function CardBg({ sinScalar }) {
 	);
 	extend({ CardBackground });
 	return (
-		<mesh scale={[width, height, 1]}>
+		<mesh scale={[width * 2, height * 2, 1]} position-z={positionZ}>
 			<planeGeometry />
 			<cardBackground ref={material} sinScalar={sinScalar} />
 		</mesh>
